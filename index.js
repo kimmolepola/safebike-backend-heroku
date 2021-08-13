@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server-azure-functions');
+const { ApolloServer, gql } = require('apollo-server');
 const mongoose = require('mongoose');
 
 const featureSchema = new mongoose.Schema({
@@ -79,7 +79,7 @@ const resolvers = {
       return 'feature added';
     },
   },
-  // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
   Query: {
     allFeatures: async () => { const features = await Feature.find({}); console.log('features: ', features); return features; },
     hello: () => 'hello',
@@ -101,6 +101,7 @@ const server = new ApolloServer({ typeDefs, resolvers, playground: true });
 // for Heroku
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`Server ready at ${url}`);
+});
 
 // for Azure functions
-// exports.graphqlHandler = server.createHandler(); 
+// exports.graphqlHandler = server.createHandler();

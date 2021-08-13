@@ -1,12 +1,12 @@
 {
-  "name": "bikesafe-backend",
+  "name": "safebike-backend",
   "version": "1.0.0",
   "scripts": {
     "start": "node index.js",
     "test": "jest"
   },
   "dependencies": {
-    "apollo-server-azure-functions": "^2.21.2",
+    "apollo-server": "^3.1.2",
     "graphql": "^15.5.0",
     "mongoose": "^5.12.8"
   },
